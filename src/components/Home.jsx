@@ -1,3 +1,6 @@
+// eslint-disable-next-line
+// eslint-disable-line no-console
+
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import Box from "@mui/material/Box";
