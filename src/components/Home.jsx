@@ -20,6 +20,8 @@ import {
   getDocs,
   deleteDoc,
   doc,
+  query,
+  where,
 } from "firebase/firestore";
 import { Grid } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
@@ -52,15 +54,27 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(title, desc);
-    addDoc(notesCollectionRef, {
-      title: title,
-      createdAt: serverTimestamp(),
-      description: desc,
-    });
-    setTitle("");
-    setDesc("");
-    setOpen(false);
+
+    const docRef = query(collection(db, "notes"), where("title", "==", title));
+
+    getDocs(docRef)
+      .then((querySnapshot) => {
+        if (querySnapshot.size === 0) {
+          addDoc(notesCollectionRef, {
+            title: title,
+            createdAt: serverTimestamp(),
+            description: desc,
+          });
+          setTitle("");
+          setDesc("");
+          setOpen(false);
+        } else {
+          window.alert("Title Already Exists!!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
   };
 
   const deleteNote = async (id) => {
@@ -189,11 +203,11 @@ export default function Home() {
                     </Typography>
                   </Grid>
                   <Grid item xs={2}>
-                    <RouterLink to={`/update/${note.id}`} style={{ textDecoration: "none" }}>
-                      <IconButton
-                        aria-label="edit"
-                        color="secondary"
-                      >
+                    <RouterLink
+                      to={`/update/${note.id}`}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <IconButton aria-label="edit" color="secondary">
                         <EditIcon />
                       </IconButton>
                     </RouterLink>

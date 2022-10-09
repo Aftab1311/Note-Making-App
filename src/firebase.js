@@ -4,24 +4,15 @@ import { getFirestore } from "firebase/firestore";
 // import { getAuth } from "firebase/auth";
 // import { getStorage } from "firebase/storage";
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyB2ZS_wZiPMVwj8md2nW3FOwCNjXuQYGoA",
-//   authDomain: "note-making-eb0df.firebaseapp.com",
-//   projectId: "note-making-eb0df",
-//   storageBucket: "note-making-eb0df.appspot.com",
-//   messagingSenderId: "377786333764",
-//   appId: "1:377786333764:web:fe1a74cbc6772cb1fb1a11",
-//   measurementId: "G-WG6WK9XECE"
-// };
-
 const firebaseConfig = {
-    apiKey: "AIzaSyDeHIMoklegjn2MLwRxXutlZ-I3tH9CeUs",
-    authDomain: "notemaking-63f3b.firebaseapp.com",
-    projectId: "notemaking-63f3b",
-    storageBucket: "notemaking-63f3b.appspot.com",
-    messagingSenderId: "344229475391",
-    appId: "1:344229475391:web:e87359937d1171315a348a"
-  };
+  apiKey: "AIzaSyCPYI1aSkuIkfJK6YxE68uZjcUvqX9jhUI",
+  authDomain: "notemaking-64089.firebaseapp.com",
+  projectId: "notemaking-64089",
+  storageBucket: "notemaking-64089.appspot.com",
+  messagingSenderId: "380250039770",
+  appId: "1:380250039770:web:10608cf5c0da94d5398ce3",
+  measurementId: "G-VKTKXWHLSF"
+};
 
 
 !getApps().length ? initializeApp(firebaseConfig) : getApp();
